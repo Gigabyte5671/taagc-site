@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Documentation | Tribes Ascend AGC Tool</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Giga">
+    <meta name="theme-color" content="#AA1B13">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  
+  <body>
+    <div class="navbarContainer">
+      <div class="navbar">
+        <a href="/">
+          <img src="../assets/images/TribesAscend-lg.webp" alt="">
+          <h2>TAAGC</h2>
+        </a>
+        <div class="navbarInner">
+          <div class="navbarNav">
+            <a href="/" class="navbarButton">Home</a>
+            <a href="/download" class="navbarButton">Download</a>
+            <a href="/docs" class="navbarButton navbarButtonActive">Docs</a>
+            <a href="/about" class="navbarButton">About</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pageContent">
+      <div class="docListContainer">
+        <div class="docList">
+          
+        </div>
+      </div>
+      <div class="docContainer">
+        <div class="docSubcontainer">
+          
+        </div>
+      </div>
+    </div>
+  
+    <footer>
+      
+    </footer>
+  </body>
+  
+  <script src="../lib/jquery.min.js"></script>
+  <script src="../lib/DATABASE.js"></script>
+  <script>
+    function getItemKeyFromSubitemKey(subitemKey){
+      var output = "";
+      Object.keys(database2).forEach(function(k){
+        if(k == subitemKey){
+          output = k;
+        }
+        if(output == ""){
+          Object.keys(database2[k]).forEach(function(k2){
+            if(k2 == subitemKey){
+              output = k;
+            }
+          });
+        }
+      });
+      return output;
+    }
+  </script>
+  <script> //Populate the DOM
+    var currentItem = Object.keys(database2[Object.keys(database2)[0]])[0]; //Get the first subitem in the database
+    
+    function makeItemList(){
+      var i = 0;
+      var active = "";
+      Object.keys(database1).forEach(function(k){
+        var subitem = '';
+        Object.keys(database1[k]).forEach(function(k2){
+          if(i === 0){active = " activeItem";}else{active = "";} //Highlight the first subitem
+          subitem += '<div class="docListSubitem' + active + '" onclick="currentItem = ' + "'" + k2 + "'" + ';updateCurrentPage();$(' + "'" + '.docListSubitem' + "'" + ').removeClass(' + "'" + 'activeItem' + "'" + ');$(this).addClass(' + "'" + 'activeItem' + "'" + ');">'
+            +          '<p title="' + k2.split("_").join(" ") + '">' + k2.split("_").join(" ") + '</p>'
+            +        '</div>';
+          i++;
+        });
+        
+        var item = '<div class="docListItem">'
+          +          '<p>' + k.split("_").join(" ") + '</p>'
+          +          subitem
+          +        '</div>';
+        $(".docList").append(item);
+      });
+      
+      Object.keys(database2).forEach(function(k){
+        var subitem = '';
+        Object.keys(database2[k]).forEach(function(k2){
+          subitem += '<div class="docListSubitem" onclick="currentItem = ' + "'" + k2 + "'" + ';updateCurrentPage();$(' + "'" + '.docListSubitem' + "'" + ').removeClass(' + "'" + 'activeItem' + "'" + ');$(this).addClass(' + "'" + 'activeItem' + "'" + ');">'
+            +          '<p title="' + k2.split("_").join(" ") + '">' + k2.split("_").join(" ") + '</p>'
+            +        '</div>';
+          i++;
+        });
+        
+        var item = '<div class="docListItem">'
+          +          '<p>' + k.split("_").join(" ") + '</p>'
+          +          subitem
+          +        '</div>';
+        $(".docList").append(item);
+      });
+    }
+    makeItemList();
+    
+    
+    
+    function updateCurrentPage(){
+      $(".docSubcontainer").empty();
+      
+      var item = '<div class="docTitle">'
+        +          currentItem.split("_").join(" ")
+        +        '</div>';
+      $(".docSubcontainer").append(item);
+      
+      if(database2[getItemKeyFromSubitemKey(currentItem)][currentItem].type == "Number"){
+        item = '<div class="docType">Type: A '
+          +      database2[getItemKeyFromSubitemKey(currentItem)][currentItem].type.toLowerCase()
+          +      ' between '
+          +      database2[getItemKeyFromSubitemKey(currentItem)][currentItem].min
+          +      ' '
+          +      database2[getItemKeyFromSubitemKey(currentItem)][currentItem].unit
+          +      ' and '
+          +      database2[getItemKeyFromSubitemKey(currentItem)][currentItem].max
+          +      ' '
+          +      database2[getItemKeyFromSubitemKey(currentItem)][currentItem].unit
+          +    '.</div>';
+        $(".docSubcontainer").append(item);
+      }else if(database2[getItemKeyFromSubitemKey(currentItem)][currentItem].type == "Checkbox"){
+        item = '<div class="docType">Type: '
+          +      database2[getItemKeyFromSubitemKey(currentItem)][currentItem].type
+          +    '.</div>';
+        $(".docSubcontainer").append(item);
+      }else if(database2[getItemKeyFromSubitemKey(currentItem)][currentItem].type == "Slider"){
+        item = '<div class="docType">Type: A '
+          +      database2[getItemKeyFromSubitemKey(currentItem)][currentItem].type.toLowerCase()
+          +      ' between '
+          +      database2[getItemKeyFromSubitemKey(currentItem)][currentItem].min
+          +      ' and '
+          +      database2[getItemKeyFromSubitemKey(currentItem)][currentItem].max
+          +    '.</div>';
+        $(".docSubcontainer").append(item);
+      }
+      
+      if(database2[getItemKeyFromSubitemKey(currentItem)][currentItem].note != ""){
+        item = '<div class="docNote" title="Note">'
+          +      '<img src="../assets/icons/info-24px.svg" draggable="false">'
+          +      '<p>' + database2[getItemKeyFromSubitemKey(currentItem)][currentItem].note + '</p>'
+          +    '</div>';
+        $(".docSubcontainer").append(item);
+      }
+      
+      if(database2[getItemKeyFromSubitemKey(currentItem)][currentItem].sgst != ""){
+        item = '<div class="docNote docSgst" title="Suggested Setting">'
+          +      '<img src="../assets/icons/suggestion-24px.svg" draggable="false">'
+          +      '<p>' + database2[getItemKeyFromSubitemKey(currentItem)][currentItem].sgst + '</p>'
+          +    '</div>';
+        $(".docSubcontainer").append(item);
+      }
+      
+      if(database2[getItemKeyFromSubitemKey(currentItem)][currentItem].warn != ""){
+        item = '<div class="docNote docWarn" title="Warning!">'
+          +      '<img src="../assets/icons/warning-24px.svg" draggable="false">'
+          +      '<p>' + database2[getItemKeyFromSubitemKey(currentItem)][currentItem].warn + '</p>'
+          +    '</div>';
+        $(".docSubcontainer").append(item);
+      }
+      
+      item = '<div class="docInfo">'
+        +      '<p>' + database2[getItemKeyFromSubitemKey(currentItem)][currentItem].info + '</p>'
+        +    '</div>';
+      $(".docSubcontainer").append(item);
+      
+      if(database2[getItemKeyFromSubitemKey(currentItem)][currentItem].img != ""){
+        item = '<div class="docInfo docExapmle">'
+          +      '<p>Example:</p>'
+          +      '<img src="../assets/images/' + database2[getItemKeyFromSubitemKey(currentItem)][currentItem].img + '">'
+          +    '</div>';
+        $(".docSubcontainer").append(item);
+      }else{
+        item = '<div class="docInfo docExapmle">'
+          +      '<p>Example:</p>'
+          +      '<p><i>There is no example available for this setting.</i></p>'
+          +    '</div>';
+        $(".docSubcontainer").append(item);
+      }
+    }
+    
+    updateCurrentPage();
+  </script>
+</html>

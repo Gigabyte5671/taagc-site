@@ -1,0 +1,362 @@
+html{
+  height: 100%;
+}
+body{
+  margin: unset;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+}
+
+
+
+.navbarContainer{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 6;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: #AA1B13;
+  box-sizing: border-box;
+}
+.navbar{
+  max-width: 1100px;
+  margin: auto;
+  padding-left: 11px;
+  padding-right: 11px;
+  box-sizing: border-box;
+}
+.navbar a{
+  color: white;
+  text-decoration: none;
+  user-select: none;
+}
+.navbar img{
+  display: inline-block;
+  width: 30px;
+  margin-top: 2px;
+  margin-right: 10px;
+}
+.navbar h2{
+  display: inline-block;
+  margin: unset;
+  margin-top: 8px;
+  vertical-align: top;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 18px;
+}
+.navbarInner{
+  display: inline-block;
+  width: fit-content;
+  height: 34px;
+  float: right;
+  margin-left: auto;
+}
+.navbarNav{
+  
+}
+.navbarButton{
+  display: inline-block;
+  height: 100%;
+  padding-top: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 6px;
+  font-weight: 300;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+.navbarButton:hover{
+  opacity: 1;
+}
+.navbarButtonActive{
+  opacity: 1;
+}
+
+.pageContent{
+  max-width: 1100px;
+  margin: auto;
+  margin-top: 50px;
+  padding-bottom: 75px;
+  background-color: white;
+}
+
+.homepageLogo{
+  width: 630px;
+  margin: auto;
+  padding-top: 70px;
+  padding-bottom: 55px;
+}
+.homepageLogo img{
+  width: 100%;
+}
+.logoBackgroundGrad{
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 89%);
+  z-index: -1;
+}
+.logoBackground{
+  //display: none;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100% !important;
+  opacity: 0.2;
+  z-index: -2;
+  //clip-path: inset(0px 0px 48% 0%);
+}
+.title{
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 20px;
+  color: #AA1B13;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+.subtitle{
+  width: fit-content;
+  margin: auto;
+  color: #AA1B13;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}
+.buttonContainer{
+  display: block;
+  width: fit-content;
+  margin: auto;
+  margin-top: 10px;
+}
+.button{
+  width: fit-content;
+  height: 28px;
+  margin: auto;
+  padding-top: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transform: translateY(30px);
+  text-align: center;
+  color: #AA1B13;
+  border: 1px solid #AA1B13;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s ease all;
+}
+.button:hover{
+  color: white;
+  background-color: #AA1B13;
+}
+.info{
+  width: fit-content;
+  max-width: 560px;
+  margin: auto;
+  padding: 15px;
+  font-size: 18px;
+  text-align: center;
+  //background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+}
+
+.downloadContainer{
+  width: 100%;
+  margin-top: 200px;
+  transform: translateY(-50%);
+}
+.downloadButton{
+  display: block;
+  width: 250px;
+  margin: auto;
+  text-decoration: none;
+  color: black;
+  border: 3px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px grey;
+  box-sizing: border-box;
+  transition: 0.2s ease all;
+}
+.downloadButton:hover{
+  transform: scale(1.02);
+  box-shadow: 0px 0px 3px grey;
+}
+.downloadIcon{
+  width: 200px;
+  margin: auto;
+}
+.downloadIcon img{
+  width: 100%;
+}
+.downloadText{
+  margin-bottom: 40px;
+  font-size: 26px;
+  text-align: center;
+}
+
+
+.docListContainer{
+  display: inline-block;
+  width: 220px;
+  height: 100%;
+  margin-top: 30px;
+  vertical-align: top;
+  border-right: 1px solid lightgrey;
+  //box-shadow: 0px 0px 6px grey;
+  box-sizing: border-box;
+}
+.docList{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+.docListItem{
+  width: 100%;
+}
+.docListItem p{
+  margin-bottom: 10px;
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.docListSubitem{
+  width: 100%;
+  height: 30px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: 0.2s esae all;
+}
+.docListSubitem p{
+  margin: unset;
+  padding-left: 30px;
+  font-size: 14px;
+  font-weight: unset;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  user-select: none;
+}
+.docListSubitem:hover{
+  color: #AA1B13;
+  opacity: 1;
+}
+.activeItem{
+  color: #AA1B13 !important;
+  opacity: 1 !important;
+}
+.docContainer{
+  display: inline-block;
+  width: calc(100% - 220px);
+  height: 100%;
+  margin-top: 30px;
+  vertical-align: top;
+  float: right;
+  box-sizing: border-box;
+}
+.docSubcontainer{
+  width: calc(100% - 60px);
+  margin: auto;
+}
+.docTitle{
+  width: 100%;
+  height: 40px;
+  margin-left: 30px;
+  margin-bottom: 5px;
+  font-size: 24px;
+  font-weight: 600;
+  border-bottom: 1px solid lightgrey;
+}
+.docTitle img{
+  width: 20px;
+  margin-top: 3px;
+  margin-left: 5px;
+  opacity: 0.5;
+}
+.docTitle img:first-child{
+  margin-left: 25px;
+}
+.docType{
+  width: 100%;
+  margin-top: 0px;
+  margin-left: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  border-bottom: 1px solid lightgrey;
+}
+.docInfo{
+  width: 100%;
+  margin-top: 50px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+.docExapmle{
+  font-size: 14px;
+}
+.docNote{
+  width: calc(100% - 25px);
+  margin-top: 5px;
+  margin-left: 35px;
+  padding: 5px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+.docNote img{
+  display: inline-block;
+  width: 20px;
+  margin-left: 5px;
+  margin-right: 10px;
+  transform: translateY(2px);
+}
+.docNote p{
+  display: inline-block;
+  margin: unset;
+  font-size: 14px;
+  transform: translateY(-3px);
+  user-select: none;
+}
+.docWarn{
+  background-color: #FFFBE5;
+}
+.docSgst{
+  background-color: aliceblue;
+}
+
+
+footer{
+  position: relative;
+  height: 100px;
+  margin-top: 140px;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  color: #202020;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  background-color: #20232A;
+  border: none;
+}
+.footerAuthor{
+  
+}
+
+
+@media only screen and (min-width: 1500px){
+  .navbar{
+    max-width: 1400px;
+  }
+  .pageContent{
+    max-width: 1400px;
+  }
+}
