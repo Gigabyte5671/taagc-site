@@ -147,6 +147,7 @@ body{
   padding-right: 10px;
   transform: translateY(30px);
   text-align: center;
+  text-decoration: none;
   color: #AA1B13;
   border: 1px solid #AA1B13;
   border-radius: 5px;
